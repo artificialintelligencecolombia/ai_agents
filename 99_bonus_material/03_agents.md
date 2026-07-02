@@ -4,7 +4,7 @@
 2. **Feedback loops**: It allows information to come back and be processed multiple times
 3. **No fixed path**: there is no series of steps, its dynamic (more powerful but less predictable)
 
-Reference: 
+Reference:
                          ---- Action ---->
 HUMAN ->  LLM Call                            ENVIRONMENT
                          <--- Feedback ----
