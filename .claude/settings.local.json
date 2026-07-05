@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(xargs -a /tmp/claude-1000/-mnt-c-Users-damal-repos-agents/0c7e222c-bf4d-45ec-8487-925771b43049/scratchpad/core_files.txt grep -hoE \"\\(^|\\\\\\\\\\\\\\\\n\\)\\(import|from\\) [a-zA-Z0-9_.]+\")",
+      "Bash(awk '{print $NF}')",
+      "Bash(cd *)",
+      "Bash(python3 -c ' *)",
+      "Bash(xargs cat)",
+      "Bash(grep -v '^$')",
+      "Bash(timeout 60 bash -c ' *)",
+      "Bash(timeout 100 xargs -a /tmp/claude-1000/-mnt-c-Users-damal-repos-agents/0c7e222c-bf4d-45ec-8487-925771b43049/scratchpad/all_text_files.txt grep -oiE \"guardrails|dspy|haystack|llama_index|llamaindex|bedrock|vertex ai|vertexai|sagemaker|terraform|kubernetes|docker-compose|opik|comet_ml|trulens|ragas|streamlit|zapier|n8n|make\\\\.com|vercel|modal\\\\.com\")",
+      "Skill(artifact-design)",
+      "Artifact"
+    ]
+  }
+}

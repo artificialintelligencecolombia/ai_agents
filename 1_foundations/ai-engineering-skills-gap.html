@@ -1,0 +1,606 @@
+<title>AI Engineering Skills Map</title>
+<style>
+  :root {
+    --paper: #EEF0EF;
+    --ink: #1A1E23;
+    --ink-soft: #565E66;
+    --ink-faint: #7C848B;
+    --line: rgba(26,30,35,0.12);
+    --card: #FFFFFF;
+    --accent: #B8691E;
+    --accent-soft: rgba(184,105,30,0.12);
+    --core: #2F7A50;
+    --core-bg: rgba(47,122,80,0.11);
+    --community: #3E6690;
+    --community-bg: rgba(62,102,144,0.10);
+    --gap: #A8402F;
+    --gap-bg: rgba(168,64,47,0.11);
+    --shadow: 0 1px 2px rgba(20,23,27,0.04), 0 8px 24px rgba(20,23,27,0.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14171C;
+      --ink: #E6E9EC;
+      --ink-soft: #A7AEB5;
+      --ink-faint: #767E86;
+      --line: rgba(230,233,236,0.13);
+      --card: #1B1F25;
+      --accent: #E3A455;
+      --accent-soft: rgba(227,164,85,0.14);
+      --core: #6FBE93;
+      --core-bg: rgba(111,190,147,0.13);
+      --community: #8FB0D6;
+      --community-bg: rgba(143,176,214,0.13);
+      --gap: #E08277;
+      --gap-bg: rgba(224,130,119,0.13);
+      --shadow: 0 1px 2px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.28);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14171C; --ink: #E6E9EC; --ink-soft: #A7AEB5; --ink-faint: #767E86;
+    --line: rgba(230,233,236,0.13); --card: #1B1F25;
+    --accent: #E3A455; --accent-soft: rgba(227,164,85,0.14);
+    --core: #6FBE93; --core-bg: rgba(111,190,147,0.13);
+    --community: #8FB0D6; --community-bg: rgba(143,176,214,0.13);
+    --gap: #E08277; --gap-bg: rgba(224,130,119,0.13);
+    --shadow: 0 1px 2px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.28);
+  }
+  :root[data-theme="light"] {
+    --paper: #EEF0EF; --ink: #1A1E23; --ink-soft: #565E66; --ink-faint: #7C848B;
+    --line: rgba(26,30,35,0.12); --card: #FFFFFF;
+    --accent: #B8691E; --accent-soft: rgba(184,105,30,0.12);
+    --core: #2F7A50; --core-bg: rgba(47,122,80,0.11);
+    --community: #3E6690; --community-bg: rgba(62,102,144,0.10);
+    --gap: #A8402F; --gap-bg: rgba(168,64,47,0.11);
+    --shadow: 0 1px 2px rgba(20,23,27,0.04), 0 8px 24px rgba(20,23,27,0.05);
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--paper); }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 3.5rem 1.5rem 6rem; }
+
+  h1, h2, h3 {
+    font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .kicker {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.9rem;
+  }
+  h1 { font-size: clamp(1.9rem, 4vw, 2.5rem); letter-spacing: -0.01em; }
+  .lede {
+    margin: 1rem 0 0;
+    max-width: 62ch;
+    color: var(--ink-soft);
+    font-size: 1.04rem;
+  }
+  .methodology {
+    margin-top: 1.4rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.86rem;
+    color: var(--ink-faint);
+    max-width: 68ch;
+  }
+  .methodology strong { color: var(--ink-soft); font-weight: 600; }
+
+  /* stat strip */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 2.4rem 0 2.6rem;
+  }
+  .stat {
+    background: var(--card);
+    padding: 1.1rem 1.2rem;
+  }
+  .stat .n {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+    font-size: 1.7rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .stat .l {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+  .stat.total .n { color: var(--ink); }
+  .stat.core .n { color: var(--core); }
+  .stat.community .n { color: var(--community); }
+  .stat.gap .n { color: var(--gap); }
+
+  /* legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    align-items: center;
+    margin-bottom: 2.4rem;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+  }
+  .legend b { color: var(--ink-soft); font-weight: 600; }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    padding: 0.22em 0.62em;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; flex: none; }
+  .pill-core { background: var(--core-bg); color: var(--core); }
+  .pill-core::before { background: var(--core); }
+  .pill-community { background: var(--community-bg); color: var(--community); }
+  .pill-community::before { background: var(--community); }
+  .pill-gap { background: var(--gap-bg); color: var(--gap); }
+  .pill-gap::before { background: var(--gap); }
+
+  /* toc */
+  .toc {
+    margin: 0 0 3rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+  }
+  .toc-title { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.7rem; }
+  .toc-list { columns: 2; column-gap: 1.5rem; list-style: none; padding: 0; margin: 0; font-size: 0.88rem; }
+  .toc-list li { break-inside: avoid; margin-bottom: 0.45rem; }
+  .toc-list a { color: var(--ink-soft); text-decoration: none; }
+  .toc-list a:hover, .toc-list a:focus-visible { color: var(--accent); }
+  .toc-list .tc { color: var(--ink-faint); font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.76rem; }
+
+  /* domain sections */
+  .domain {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+    margin-bottom: 0.9rem;
+    scroll-margin-top: 1.2rem;
+  }
+  .domain > summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.05rem 1.3rem;
+  }
+  .domain > summary::-webkit-details-marker { display: none; }
+  .domain > summary::before {
+    content: "›";
+    font-family: ui-serif, Georgia, serif;
+    display: inline-block;
+    margin-right: 0.6rem;
+    color: var(--ink-faint);
+    transition: transform 0.15s ease;
+  }
+  .domain[open] > summary::before { transform: rotate(90deg); }
+  .domain-name { display: flex; align-items: baseline; gap: 0.6rem; }
+  .domain-name h3 { font-size: 1.08rem; }
+  .domain-count {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 0.74rem;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  .domain-count b { font-weight: 600; }
+  .domain-count .c-core { color: var(--core); }
+  .domain-count .c-comm { color: var(--community); }
+  .domain-count .c-gap { color: var(--gap); }
+
+  .rows { border-top: 1px solid var(--line); overflow-x: auto; }
+  .row {
+    display: grid;
+    grid-template-columns: minmax(170px, 250px) 118px 1fr;
+    gap: 0.9rem;
+    padding: 0.85rem 1.3rem;
+    border-top: 1px solid var(--line);
+  }
+  .row:first-child { border-top: none; }
+  .row .skill { font-weight: 600; font-size: 0.92rem; padding-top: 0.15em; }
+  .row .evidence { color: var(--ink-soft); font-size: 0.88rem; }
+
+  @media (max-width: 640px) {
+    .row { grid-template-columns: 1fr; gap: 0.35rem; }
+    .toc-list { columns: 1; }
+  }
+
+  /* gaps section */
+  .gaps {
+    margin-top: 3rem;
+    padding: 2rem 2rem 1.6rem;
+    border: 1px solid var(--gap);
+    border-radius: 12px;
+    background: var(--gap-bg);
+  }
+  .gaps h2 { font-size: 1.5rem; }
+  .gaps .lede { color: var(--ink-soft); margin-top: 0.6rem; }
+  .gap-list { list-style: none; margin: 1.6rem 0 0; padding: 0; counter-reset: gapnum; }
+  .gap-item {
+    counter-increment: gapnum;
+    display: grid;
+    grid-template-columns: 2.2rem 1fr;
+    gap: 0.9rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .gap-item:first-child { border-top: none; }
+  .gap-item::before {
+    content: counter(gapnum);
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 0.95rem;
+    color: var(--gap);
+    padding-top: 0.15em;
+  }
+  .gap-item h4 { margin: 0 0 0.25rem; font-size: 1.02rem; font-family: ui-serif, Georgia, serif; font-weight: 600; }
+  .gap-item p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; max-width: 66ch; }
+
+  .strengths {
+    margin-top: 1.4rem;
+    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--core);
+    border-radius: 10px;
+    background: var(--core-bg);
+  }
+  .strengths h3 { font-size: 1rem; color: var(--core); font-family: ui-monospace, "SF Mono", Consolas, monospace; letter-spacing: 0.02em; text-transform: uppercase; font-weight: 600; }
+  .strengths ul { margin: 0.8rem 0 0; padding-left: 1.1rem; color: var(--ink-soft); font-size: 0.92rem; }
+  .strengths li { margin-bottom: 0.4rem; }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    .domain > summary::before { transition: none; }
+  }
+</style>
+
+<div class="wrap">
+
+  <p class="kicker">Skills taxonomy · repo audit</p>
+  <h1>The AI engineering skills map</h1>
+  <p class="lede">What the industry expects from an AI engineer in 2026, organized into 14 domains — then checked line by line against six weeks of <em>Master AI Agentic Engineering</em>: what's taught in the core curriculum, what only shows up in student community contributions, and what's missing entirely.</p>
+  <p class="methodology">
+    <strong>Method:</strong> the taxonomy comes from ~15 targeted searches across 2026 AI-engineer job postings, roadmap sites, and framework/tooling comparisons (LangChain, CrewAI, AutoGen, MCP, RAG eval, observability, fine-tuning). The repo side comes from a full scan of the root dependency manifests, every notebook and script across <code>1_foundations</code> → <code>6_mcp</code>, <code>guides/</code>, <code>99_bonus_material/</code> — plus a sweep of roughly 800 student <code>community_contributions/</code> submissions.
+  </p>
+
+  <div class="stats">
+    <div class="stat total"><div class="n">96</div><div class="l">skills tracked</div></div>
+    <div class="stat core"><div class="n">41</div><div class="l">core curriculum · 43%</div></div>
+    <div class="stat community"><div class="n">26</div><div class="l">community-only · 27%</div></div>
+    <div class="stat gap"><div class="n">29</div><div class="l">gaps · 30%</div></div>
+  </div>
+
+  <div class="legend">
+    <span><b>Reading the pills</b></span>
+    <span class="pill pill-core">core</span> taught in the 6-week curriculum
+    <span class="pill pill-community">community</span> student submissions only
+    <span class="pill pill-gap">gap</span> not found anywhere in the repo
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">Jump to a domain</div>
+    <ul class="toc-list">
+      <li><a href="#math"><span class="tc">A·</span> Math &amp; ML theory</a></li>
+      <li><a href="#prog"><span class="tc">B·</span> Programming &amp; software eng.</a></li>
+      <li><a href="#llm"><span class="tc">C·</span> LLM providers &amp; APIs</a></li>
+      <li><a href="#prompt"><span class="tc">D·</span> Prompt &amp; context engineering</a></li>
+      <li><a href="#agentic"><span class="tc">E·</span> Agentic orchestration frameworks</a></li>
+      <li><a href="#mcp"><span class="tc">F·</span> MCP &amp; tool ecosystem</a></li>
+      <li><a href="#rag"><span class="tc">G·</span> RAG &amp; knowledge retrieval</a></li>
+      <li><a href="#finetune"><span class="tc">H·</span> Fine-tuning &amp; customization</a></li>
+      <li><a href="#eval"><span class="tc">I·</span> Evaluation &amp; testing</a></li>
+      <li><a href="#observability"><span class="tc">J·</span> Observability &amp; monitoring</a></li>
+      <li><a href="#deploy"><span class="tc">K·</span> Deployment &amp; infrastructure</a></li>
+      <li><a href="#security"><span class="tc">L·</span> Security &amp; safety</a></li>
+      <li><a href="#automation"><span class="tc">M·</span> Workflow automation (no-code)</a></li>
+      <li><a href="#voice"><span class="tc">N·</span> Voice &amp; multimodal</a></li>
+    </ul>
+  </nav>
+
+  <!-- A -->
+  <details class="domain" id="math" open>
+    <summary>
+      <div class="domain-name"><h3>A · Math &amp; ML theory foundations</h3></div>
+      <div class="domain-count"><span class="c-gap">4 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">Linear algebra, calculus, optimization</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Course is application/API-level throughout; no derivations or math notebooks.</div></div>
+      <div class="row"><div class="skill">Probability &amp; statistics</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not covered — distributions, hypothesis testing, estimation are absent.</div></div>
+      <div class="row"><div class="skill">Transformer architecture internals</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Agent-loop and design-pattern theory is covered (bonus material); model internals are not.</div></div>
+      <div class="row"><div class="skill">Embeddings &amp; vector-space theory</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Embeddings are used in practice (see RAG) but never explained conceptually.</div></div>
+    </div>
+  </details>
+
+  <!-- B -->
+  <details class="domain" id="prog" open>
+    <summary>
+      <div class="domain-name"><h3>B · Programming &amp; software engineering</h3></div>
+      <div class="domain-count"><span class="c-core">4 core</span> · <span class="c-comm">1 community</span> · <span class="c-gap">2 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">Python (OOP, typing, idioms)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Every week; <code>guides/</code> covers comprehensions, generators, decorators, type hints.</div></div>
+      <div class="row"><div class="skill">Async Python (asyncio)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Dedicated guide; Week 4 async LangGraph; Week 6 scheduled trading loop.</div></div>
+      <div class="row"><div class="skill">Git &amp; GitHub workflow</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence"><code>guides/</code> has a dedicated notebook.</div></div>
+      <div class="row"><div class="skill">SQL / relational persistence</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">SQLite backs LangGraph checkpoints, CrewAI long-term memory, and the Week 6 accounts/trading DB.</div></div>
+      <div class="row"><div class="skill">PostgreSQL, SQLAlchemy, Alembic</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Several student projects add a full relational-DB layer on top.</div></div>
+      <div class="row"><div class="skill">TypeScript / JavaScript</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Node/npm only launches MCP servers (Playwright, filesystem); never taught as a language.</div></div>
+      <div class="row"><div class="skill">C++ / Rust (inference-perf tier)</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not expected in an API-first course, but absent even as a mention.</div></div>
+    </div>
+  </details>
+
+  <!-- C -->
+  <details class="domain" id="llm" open>
+    <summary>
+      <div class="domain-name"><h3>C · LLM providers &amp; APIs</h3></div>
+      <div class="domain-count"><span class="c-core">7 core</span> · <span class="c-comm">5 community</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">OpenAI API</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Backbone of Weeks 1–2 and 6.</div></div>
+      <div class="row"><div class="skill">Anthropic Claude API</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 1 Messages API, streaming, prompt chaining.</div></div>
+      <div class="row"><div class="skill">Ollama (local models)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 1 provider comparison; <code>guides/09</code>.</div></div>
+      <div class="row"><div class="skill">Groq</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 1 provider comparison.</div></div>
+      <div class="row"><div class="skill">DeepSeek</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 1 comparison; Week 6 multi-provider routing.</div></div>
+      <div class="row"><div class="skill">OpenRouter (model gateway)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence"><code>guides/09</code> plus Week 6 trading-floor routing.</div></div>
+      <div class="row"><div class="skill">Hugging Face Hub</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Model ecosystem referenced; Spaces used for deployment (see Deployment).</div></div>
+      <div class="row"><div class="skill">Google Gemini</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Core only routes to it via an OpenAI-compatible endpoint (Week 6); students go deeper with <code>google-genai</code>/Vertex AI.</div></div>
+      <div class="row"><div class="skill">xAI / Grok</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Touched in Week 6 multi-provider routing, not a dedicated lesson.</div></div>
+      <div class="row"><div class="skill">AWS Bedrock</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Multiple submissions build entire labs on Bedrock/AWS Strands.</div></div>
+      <div class="row"><div class="skill">Azure OpenAI / AI Foundry</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Azure AI Agents/Projects SDK appears in student projects only.</div></div>
+      <div class="row"><div class="skill">Cohere</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence"><code>langchain-cohere</code> pulled in by student submissions.</div></div>
+    </div>
+  </details>
+
+  <!-- D -->
+  <details class="domain" id="prompt" open>
+    <summary>
+      <div class="domain-name"><h3>D · Prompt &amp; context engineering</h3></div>
+      <div class="domain-count"><span class="c-core">4 core</span> · <span class="c-gap">2 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">Prompt engineering fundamentals</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">System prompts, few-shot, roleplay used throughout.</div></div>
+      <div class="row"><div class="skill">Prompt chaining pattern</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 1 dedicated notebook + catalogued in <code>99_bonus_material</code>.</div></div>
+      <div class="row"><div class="skill">Function / tool calling (JSON schema)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">From the Week 1 digital-twin project onward.</div></div>
+      <div class="row"><div class="skill">Structured outputs (Pydantic schemas)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Weeks 2–5 all use <code>output_type</code> / <code>with_structured_output</code> / <code>output_pydantic</code>.</div></div>
+      <div class="row"><div class="skill">Context engineering as a named discipline</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Never named or taught as its own skill — despite being called the fastest-growing 2026 practice.</div></div>
+      <div class="row"><div class="skill">Prompt caching</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not implemented or mentioned anywhere in the repo.</div></div>
+    </div>
+  </details>
+
+  <!-- E -->
+  <details class="domain" id="agentic" open>
+    <summary>
+      <div class="domain-name"><h3>E · Agentic orchestration frameworks</h3></div>
+      <div class="domain-count"><span class="c-core">8 core</span> · <span class="c-comm">7 community</span> · <span class="c-gap">2 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">OpenAI Agents SDK</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 2 in full, reused as the agent layer in Week 6.</div></div>
+      <div class="row"><div class="skill">CrewAI</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 3 in full: sequential &amp; hierarchical crews, tools, knowledge.</div></div>
+      <div class="row"><div class="skill">LangChain</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 4 tool/toolkit layer feeding LangGraph.</div></div>
+      <div class="row"><div class="skill">LangGraph</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 4 in full: state graphs, checkpointing, time-travel.</div></div>
+      <div class="row"><div class="skill">AutoGen / AutoGen Core</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 5, including a distributed gRPC agent runtime.</div></div>
+      <div class="row"><div class="skill">Multi-agent design patterns (handoffs, routing, orchestrator–worker, evaluator–optimizer, parallelization)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Explicitly catalogued in <code>99_bonus_material/02_agentic_design_patterns.md</code> and implemented across weeks.</div></div>
+      <div class="row"><div class="skill">Guardrails (input/output validation)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Native OpenAI Agents SDK guardrails, Week 2.</div></div>
+      <div class="row"><div class="skill">Agent memory (short/long-term, checkpointing)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">CrewAI LTM/RAGStorage (Wk 3); LangGraph <code>MemorySaver</code> + SQL state (Wk 4).</div></div>
+      <div class="row"><div class="skill">Semantic Kernel</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Sits in the root dependencies but no core notebook exercises it — students pick it up instead.</div></div>
+      <div class="row"><div class="skill">AWS Strands SDK</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Used in several Bedrock-based submissions.</div></div>
+      <div class="row"><div class="skill">LlamaIndex</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Handful of mentions in Week 2 &amp; 3 submissions.</div></div>
+      <div class="row"><div class="skill">DSPy</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Appears in a couple of Week 2/5 submissions.</div></div>
+      <div class="row"><div class="skill">Haystack</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">One Week 3 submission.</div></div>
+      <div class="row"><div class="skill">LiteLLM (universal model gateway)</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">One of the most common student additions across every week.</div></div>
+      <div class="row"><div class="skill"><code>instructor</code> (structured-output library)</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Used where students want structured outputs outside a framework's native support.</div></div>
+      <div class="row"><div class="skill">Anthropic Claude Agent SDK</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Course uses the raw Anthropic Messages API instead — the dedicated Agent SDK isn't used anywhere.</div></div>
+      <div class="row"><div class="skill">A2A (Agent2Agent protocol)</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not mentioned; MCP is the only inter-agent/tool standard covered.</div></div>
+    </div>
+  </details>
+
+  <!-- F -->
+  <details class="domain" id="mcp" open>
+    <summary>
+      <div class="domain-name"><h3>F · MCP &amp; tool ecosystem</h3></div>
+      <div class="domain-count"><span class="c-core">4 core</span> · <span class="c-gap">1 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">MCP server &amp; client (Python SDK)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 6 in full — <code>FastMCP</code>, <code>@mcp.tool</code>, <code>ClientSession</code>, both sides built from scratch.</div></div>
+      <div class="row"><div class="skill">MCP transports &amp; topologies (stdio, local/remote)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 6 lab 3 walks through local-only, local-calls-web-service, and remote setups.</div></div>
+      <div class="row"><div class="skill">Third-party MCP servers (fetch, filesystem, Playwright, Brave Search, memory)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Wired into the Week 6 trading-floor project alongside a Polygon.io financial-data MCP server.</div></div>
+      <div class="row"><div class="skill">MCP marketplaces (Smithery, mcp.so, Glama)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Referenced directly in Week 6 lab 1.</div></div>
+      <div class="row"><div class="skill">Sandboxed code execution (E2B / Modal)</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Course uses Docker sandboxing instead (see Deployment); E2B/Modal aren't used.</div></div>
+    </div>
+  </details>
+
+  <!-- G -->
+  <details class="domain" id="rag" open>
+    <summary>
+      <div class="domain-name"><h3>G · RAG &amp; knowledge retrieval</h3></div>
+      <div class="domain-count"><span class="c-core">3 core</span> · <span class="c-comm">3 community</span> · <span class="c-gap">4 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">Embeddings for retrieval</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">OpenAI <code>text-embedding-3-small</code> powers CrewAI's RAGStorage entity/long-term memory, Week 3.</div></div>
+      <div class="row"><div class="skill">Document parsing &amp; ingestion (PDF)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence"><code>pypdf</code> in the Week 1 digital-twin project.</div></div>
+      <div class="row"><div class="skill">Knowledge-graph memory</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence"><code>mcp-memory-libsql</code> server in the Week 6 trading floor.</div></div>
+      <div class="row"><div class="skill">Chroma (as a standalone, explicit RAG store)</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Runs invisibly inside CrewAI in core; students use it directly for their own RAG.</div></div>
+      <div class="row"><div class="skill">Qdrant, LanceDB</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Alternative vector stores in a handful of submissions.</div></div>
+      <div class="row"><div class="skill">Document parsing, extended (docx, weasyprint, pdfplumber)</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Broader ingestion tooling added by students.</div></div>
+      <div class="row"><div class="skill">Vector-database concepts &amp; selection tradeoffs</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Chroma runs invisibly inside CrewAI; no lesson explains indexing, ANN search, or how to choose a vector DB.</div></div>
+      <div class="row"><div class="skill">Pinecone, Weaviate, FAISS</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Appear only as comments/prompt text in one community notebook — never actually wired up.</div></div>
+      <div class="row"><div class="skill">Chunking strategies</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not covered anywhere.</div></div>
+      <div class="row"><div class="skill">Hybrid search &amp; reranking</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not covered anywhere.</div></div>
+    </div>
+  </details>
+
+  <!-- H -->
+  <details class="domain" id="finetune" open>
+    <summary>
+      <div class="domain-name"><h3>H · Fine-tuning &amp; model customization</h3></div>
+      <div class="domain-count"><span class="c-gap">4 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">Supervised fine-tuning (SFT)</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Course is 100% prompting/agents — no training step anywhere.</div></div>
+      <div class="row"><div class="skill">LoRA / QLoRA / PEFT</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not present in core or community content.</div></div>
+      <div class="row"><div class="skill">RLHF / DPO</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not present anywhere.</div></div>
+      <div class="row"><div class="skill">Fine-tuning dataset curation</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not present anywhere.</div></div>
+    </div>
+  </details>
+
+  <!-- I -->
+  <details class="domain" id="eval" open>
+    <summary>
+      <div class="domain-name"><h3>I · Evaluation &amp; testing</h3></div>
+      <div class="domain-count"><span class="c-core">1 core</span> · <span class="c-comm">1 community</span> · <span class="c-gap">2 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">Eval pipelines / LLM-as-judge</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 1 lab 3 (LLM evaluates LLM); LangGraph worker/evaluator graph, Week 4.</div></div>
+      <div class="row"><div class="skill">Automated test suites (pytest)</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence"><code>pytest</code>/<code>pytest-asyncio</code> used in some student projects; not part of core.</div></div>
+      <div class="row"><div class="skill">Golden datasets &amp; regression suites</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">No ground-truth-labeled eval sets or CI regression gates anywhere.</div></div>
+      <div class="row"><div class="skill">RAGAS / DeepEval / TruLens</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">None of the standard eval frameworks appear in the repo.</div></div>
+    </div>
+  </details>
+
+  <!-- J -->
+  <details class="domain" id="observability" open>
+    <summary>
+      <div class="domain-name"><h3>J · Observability &amp; monitoring</h3></div>
+      <div class="domain-count"><span class="c-core">3 core</span> · <span class="c-comm">4 community</span> · <span class="c-gap">1 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">Native provider tracing (OpenAI traces dashboard)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 2.</div></div>
+      <div class="row"><div class="skill">LangSmith</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 4 setup + tracing.</div></div>
+      <div class="row"><div class="skill">Custom tracing / homegrown dashboards</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 6's <code>TracingProcessor</code> subclass logs agent/trace/span events to SQLite, rendered in a Gradio + Plotly dashboard.</div></div>
+      <div class="row"><div class="skill">Langfuse</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Single mention across all submissions.</div></div>
+      <div class="row"><div class="skill">Opik / Comet</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">A couple of mentions in Week 4/5 submissions.</div></div>
+      <div class="row"><div class="skill">MLflow tracing</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">One Week 2 submission.</div></div>
+      <div class="row"><div class="skill">OpenTelemetry</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Instrumentation packages pulled in by a few projects.</div></div>
+      <div class="row"><div class="skill">Weights &amp; Biases, Helicone</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not found anywhere in the repo.</div></div>
+    </div>
+  </details>
+
+  <!-- K -->
+  <details class="domain" id="deploy" open>
+    <summary>
+      <div class="domain-name"><h3>K · Deployment &amp; infrastructure</h3></div>
+      <div class="domain-count"><span class="c-core">4 core</span> · <span class="c-comm">3 community</span> · <span class="c-gap">2 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">Gradio (UI layer)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Primary UI framework across all 6 weeks.</div></div>
+      <div class="row"><div class="skill">Hugging Face Spaces deployment</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 1 digital-twin project ships live to Spaces.</div></div>
+      <div class="row"><div class="skill">Docker (sandboxed execution)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Week 3 CrewAI coder/engineering-team projects run code in Docker.</div></div>
+      <div class="row"><div class="skill"><code>uv</code> (dependency &amp; environment management)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Sets up and runs every week of the course.</div></div>
+      <div class="row"><div class="skill">Streamlit</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Popular Gradio alternative in student apps.</div></div>
+      <div class="row"><div class="skill">FastAPI / Flask</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Notably absent from the core curriculum despite being an industry-standard serving layer.</div></div>
+      <div class="row"><div class="skill">Kubernetes / Terraform</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">Rare, but present in a few student readmes/health-check tools.</div></div>
+      <div class="row"><div class="skill">CI/CD pipelines (GitHub Actions)</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not present anywhere.</div></div>
+      <div class="row"><div class="skill">Experiment tracking (MLflow / W&amp;B)</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">MLflow appears once for tracing, not for experiment tracking; W&amp;B is entirely absent.</div></div>
+    </div>
+  </details>
+
+  <!-- L -->
+  <details class="domain" id="security" open>
+    <summary>
+      <div class="domain-name"><h3>L · Security &amp; safety</h3></div>
+      <div class="domain-count"><span class="c-core">2 core</span> · <span class="c-comm">1 community</span> · <span class="c-gap">1 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">Agent guardrails (input/output validation)</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">OpenAI Agents SDK native guardrails, Week 2.</div></div>
+      <div class="row"><div class="skill">Sandboxing &amp; least-privilege tool scoping</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Docker isolation for code-exec agents, Week 3 — framed as a capability rather than a security control.</div></div>
+      <div class="row"><div class="skill">PII handling</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">One student <code>pii_tripwire_agent</code>.</div></div>
+      <div class="row"><div class="skill">Prompt-injection defense as an explicit discipline</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Guardrails exist as a pattern, but OWASP LLM Top 10 / injection-specific defenses aren't taught.</div></div>
+    </div>
+  </details>
+
+  <!-- M -->
+  <details class="domain" id="automation" open>
+    <summary>
+      <div class="domain-name"><h3>M · Workflow automation (no-code)</h3></div>
+      <div class="domain-count"><span class="c-gap">3 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">n8n</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Named only in a couple of student reflection docs; never actually built against.</div></div>
+      <div class="row"><div class="skill">Zapier</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Same pattern — mentioned, not implemented.</div></div>
+      <div class="row"><div class="skill">Make</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">Not found at all.</div></div>
+    </div>
+  </details>
+
+  <!-- N -->
+  <details class="domain" id="voice" open>
+    <summary>
+      <div class="domain-name"><h3>N · Voice &amp; multimodal</h3></div>
+      <div class="domain-count"><span class="c-core">1 core</span> · <span class="c-comm">1 community</span> · <span class="c-gap">1 gap</span></div>
+    </summary>
+    <div class="rows">
+      <div class="row"><div class="skill">Browser / computer-use agents</div><div class="status"><span class="pill pill-core">core</span></div><div class="evidence">Playwright automation — Week 2 <code>ComputerTool</code>, Week 4 browser toolkit.</div></div>
+      <div class="row"><div class="skill">Multimodal (vision) conversations</div><div class="status"><span class="pill pill-community">community</span></div><div class="evidence">AutoGen Week 5 touches a "multi-modal conversation" notebook — present but light in core.</div></div>
+      <div class="row"><div class="skill">Voice agents (Whisper, Realtime API)</div><div class="status"><span class="pill pill-gap">gap</span></div><div class="evidence">No voice/audio coverage anywhere in the repo.</div></div>
+    </div>
+  </details>
+
+  <section class="gaps" id="priority-gaps">
+    <p class="kicker" style="margin-bottom:0.4rem;">final answer</p>
+    <h2>The 12 gaps worth closing first</h2>
+    <p class="lede">Ranked by how often 2026 job postings and roadmaps ask for them, weighed against how absent they are from this repo.</p>
+    <ol class="gap-list">
+      <li class="gap-item"><h4>RAG as a first-class discipline</h4><p>Vector-DB selection, chunking, hybrid search, and reranking are the single most-deployed production pattern industry-wide — here, RAG is invisible plumbing inside CrewAI's memory system, never its own lesson.</p></li>
+      <li class="gap-item"><h4>Evaluation frameworks</h4><p>RAGAS, DeepEval, and golden-dataset methodology show up in nearly every senior AI-engineer job description. The course has the right instinct (LLM-as-judge, evaluator nodes) but no tooling to operationalize it.</p></li>
+      <li class="gap-item"><h4>Fine-tuning &amp; PEFT</h4><p>LoRA, QLoRA, RLHF, and DPO are entirely absent — the course is 100% prompting and orchestration, with no path from "prompt isn't working" to "fine-tune a small model."</p></li>
+      <li class="gap-item"><h4>Math &amp; ML theory foundations</h4><p>Zero linear algebra, probability/statistics, or transformer-internals content. Fine for using APIs, but a ceiling for anyone who needs to reason about model behavior or costs.</p></li>
+      <li class="gap-item"><h4>Production observability stack</h4><p>OpenAI native traces and LangSmith are covered, but Langfuse/Helicone-style cost tracking, latency budgets, and eval-in-CI — the tools that turn a demo into an on-call-able service — aren't.</p></li>
+      <li class="gap-item"><h4>Security as a discipline</h4><p>Guardrails exist as an implementation pattern, but prompt-injection defense and the OWASP LLM Top 10 are never framed as their own curriculum, despite being the highest-severity risk category in production agents.</p></li>
+      <li class="gap-item"><h4>Deployment/MLOps maturity</h4><p>Gradio + Hugging Face Spaces is a genuinely real deployment path, but FastAPI, CI/CD, cloud-native serving, and experiment tracking — the layer between "it runs" and "it's on-call" — are missing.</p></li>
+      <li class="gap-item"><h4>Context engineering &amp; prompt caching</h4><p>Called the direct successor to prompt engineering by multiple 2026 sources; the course does the work implicitly (managing state, tool outputs) but never names or teaches it as a skill.</p></li>
+      <li class="gap-item"><h4>No-code workflow automation</h4><p>n8n and Zapier are name-dropped in a few student reflections but never actually built — a real gap given how much production "agentic automation" hiring now happens on these platforms.</p></li>
+      <li class="gap-item"><h4>Voice &amp; multimodal agents</h4><p>No Whisper, Realtime API, or voice-agent coverage; multimodal is touched only lightly in one AutoGen notebook.</p></li>
+      <li class="gap-item"><h4>Newer inter-agent standards</h4><p>MCP is covered in unusual depth for a public course, but the adjacent A2A (Agent2Agent) protocol and Anthropic's own Claude Agent SDK aren't used anywhere.</p></li>
+      <li class="gap-item"><h4>TypeScript/JS and formal SQL</h4><p>Node is only ever used to launch MCP servers, never taught as a language; SQL is used operationally (SQLite) throughout but never taught as a querying skill.</p></li>
+    </ol>
+
+    <div class="strengths">
+      <h3>Where the repo is ahead of the curve</h3>
+      <ul>
+        <li><strong>MCP depth</strong> — a full week building both MCP servers and clients from scratch is rare; most courses treat MCP as a footnote.</li>
+        <li><strong>Framework breadth</strong> — five production agent frameworks (OpenAI Agents SDK, CrewAI, LangChain/LangGraph, AutoGen) in six weeks is unusually wide literacy.</li>
+        <li><strong>Hands-on multi-agent patterns</strong> — handoffs, guardrails, structured outputs, and orchestrator–worker are all built, not just described.</li>
+        <li><strong>Real deployment</strong> — shipping to Hugging Face Spaces beats the "notebook-only" ceiling most courses stop at.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Built from a live web-research pass (job postings, roadmap sites, framework comparisons) cross-referenced against a full scan of this repository, including <code>community_contributions/</code>. Categorization is judgment-based, not a formal taxonomy standard.
+  </footer>
+
+</div>
