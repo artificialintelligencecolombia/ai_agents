@@ -19,3 +19,14 @@ Agentic systems can be distinguished in 2 types:
 1. Workflows where LLMs and tools are orchestrated through predefined code paths
 
 2. Agents are systems where LLMs dynamically direct their own processes and tools usage, maintaining control over how they accomplish tasks
+
+## Orchestrating LLMs
+
+It consists in chaining LLMs, so the output of one LLM is the input of another. This can be done in: a linear way or in a more complex way, where the output of one LLM can be used to decide which LLM to call next.
+
+## AI Agents tools
+
+- n8n
+- elevenlabs
+- OpenAI Agent Builder
+- Crew AI Studio
