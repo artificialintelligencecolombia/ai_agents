@@ -11,7 +11,10 @@
       "Bash(timeout 60 bash -c ' *)",
       "Bash(timeout 100 xargs -a /tmp/claude-1000/-mnt-c-Users-damal-repos-agents/0c7e222c-bf4d-45ec-8487-925771b43049/scratchpad/all_text_files.txt grep -oiE \"guardrails|dspy|haystack|llama_index|llamaindex|bedrock|vertex ai|vertexai|sagemaker|terraform|kubernetes|docker-compose|opik|comet_ml|trulens|ragas|streamlit|zapier|n8n|make\\\\.com|vercel|modal\\\\.com\")",
       "Skill(artifact-design)",
-      "Artifact"
+      "Artifact",
+      "Bash(curl -sL \"https://platform.claude.com/docs/en/agents-and-tools/tool-use/build-a-tool-using-agent.md\" -A \"Mozilla/5.0\")",
+      "Bash(curl -sL \"https://platform.claude.com/docs/en/agents-and-tools/tool-use/build-a-tool-using-agent.md\" -A \"Mozilla/5.0\" -o /tmp/claude-1000/-mnt-c-Users-damal-repos-agents/ea2401a0-9ee0-43aa-ac21-17c54090f354/scratchpad/tut.md)",
+      "Bash(python3 *)"
     ]
   }
 }
