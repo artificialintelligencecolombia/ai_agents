@@ -1,6 +1,4 @@
-requests
-python-dotenv
 gradio
+anthropic
+python-dotenv
 pypdf
-openai
-openai-agents
