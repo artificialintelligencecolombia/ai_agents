@@ -1,0 +1,5 @@
+{'email': 'jeffito@yahoo.com', 'name': 'Jeff', 'notes': 'Interested in smartphones'}
+{'email': 'jeff@hotmail.com', 'name': 'Jeff', 'notes': 'Jeff visited the website and introduced himself.'}
+{'email': 'jeff@hotmail.com', 'name': 'Jeff', 'notes': "Jeff asked about legal regulations in Colombia for local businesses legalizing their operations — outside of Dani's area of expertise."}
+{'email': 'abanderasflag@hotmail.com', 'name': 'Antonio Banderas', 'notes': "User introduced themselves casually and asked about Dani's capabilities. Showed interest in what Dani can do."}
+{'email': 'abanderasflag@hotmail.com', 'name': 'Antonio Banderas', 'notes': 'User asked a medical question about bone calcium deficiency conditions. No specific project or business interest mentioned yet.'}
