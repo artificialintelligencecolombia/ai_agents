@@ -14,7 +14,13 @@
       "Artifact",
       "Bash(curl -sL \"https://platform.claude.com/docs/en/agents-and-tools/tool-use/build-a-tool-using-agent.md\" -A \"Mozilla/5.0\")",
       "Bash(curl -sL \"https://platform.claude.com/docs/en/agents-and-tools/tool-use/build-a-tool-using-agent.md\" -A \"Mozilla/5.0\" -o /tmp/claude-1000/-mnt-c-Users-damal-repos-agents/ea2401a0-9ee0-43aa-ac21-17c54090f354/scratchpad/tut.md)",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "WebFetch(domain:bair.berkeley.edu)",
+      "WebFetch(domain:platform.openai.com)",
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:www.oreilly.com)",
+      "WebFetch(domain:developers.googleblog.com)",
+      "WebFetch(domain:developers.openai.com)"
     ]
   }
 }
