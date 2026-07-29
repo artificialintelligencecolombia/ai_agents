@@ -20,7 +20,8 @@
       "WebFetch(domain:www.anthropic.com)",
       "WebFetch(domain:www.oreilly.com)",
       "WebFetch(domain:developers.googleblog.com)",
-      "WebFetch(domain:developers.openai.com)"
+      "WebFetch(domain:developers.openai.com)",
+      "WebFetch(domain:docs.claude.com)"
     ]
   }
 }
