@@ -7,12 +7,12 @@ import gradio as gr
 # Import env vars
 load_dotenv(override=True)
 anthropic_api_key = os.getenv('ANTHROPIC_API_KEY2')
-model_name = "claude-opus-4-6"
 
 # Tools
 # Description of requirements, must-to-have inputs, using context engineering
 DEFAULT_NAME = "Name not provided"
 DEFAULT_NOTES = "not provided"
+
 def record_user_details(email: str, name: str=DEFAULT_NAME, notes: str=DEFAULT_NOTES) -> str:
     if not email:
         raise ValueError("Email required to record user details")
@@ -27,13 +27,13 @@ def record_user_details(email: str, name: str=DEFAULT_NAME, notes: str=DEFAULT_N
 
 record_user_details_tool = {
     "name": "record_user_details",
-    "description": "Record the details of the user once he/she provides the email and sufficient information to record",
+    "description": "Record the details of the user once he/she provides the email and/or sufficient information to record",
     "input_schema": {
         "type": "object",
         "properties": {
             "email": {
                 "type": "string",
-                "description": "The email address of this user"
+                "description": "The user's real email address, exactly as they provided it. Never invent, guess, or use a placeholder value."
             },
             "name": {
                 "type": "string",
@@ -61,7 +61,7 @@ def record_unknown_question(question: str) -> str:
 
 record_unknown_question_tool = {
     "name": "record_unknown_question",
-    "description": "Record any question that couldn't be answered as you didn't know the answer despite the context you have",
+    "description": "Record any question that is off-topic (not about the person's career, background, skills, or experience) or that couldn't be answered from the given context, even if you personally know a general answer to it",
     "input_schema": {
         "type": "object",
         "properties": {
@@ -79,9 +79,9 @@ tools = [record_user_details_tool, record_unknown_question_tool]
 # Class definition
 class Clone:
     def __init__(self):
-        self.antrophic = Anthropic()
-        self.name = "Dani"
-        self.model_name = ""
+        self.antrophic = Anthropic(api_key=anthropic_api_key)
+        self.name = "Daniel Maldonado"
+        self.model_name = "claude-haiku-4-5"
         reader = PdfReader("4_lab4_daniel/profile.pdf") # Context injection 1
         self.linkedin = ""
         for page in reader.pages:
@@ -90,15 +90,16 @@ class Clone:
                 self.linkedin += text
         with open("4_lab4_daniel/summary.txt", "r", encoding="utf-8") as f: # Context injection 2
             self.summary = f.read()
-    
+
     def system_prompt(self) -> str:
         system_prompt = f"You are acting as {self.name}. You are answering questions on {self.name}'s website, \
         particularly questions related to {self.name}'s career, background, skills and experience. \
         Your responsibility is to represent {self.name} for interactions on the website as faithfully as possible. \
         You are given a summary of {self.name}'s background and LinkedIn profile which you can use to answer questions. \
         Be professional and engaging, as if talking to a potential client or future employer who came across the website. \
-        If you don't know the answer to any question, use your record_unknown_question tool to record the question that you couldn't answer, even if it's about something trivial or unrelated to career. \
-        If the user is engaging in discussion, try to steer them towards getting in touch via email; ask for their email and record it using your record_user_details tool. "
+        If a question is not related to your career, background, skills, or experience, use your record_unknown_question tool to record it, even if you happen to know the general answer, then briefly redirect the conversation back to your background. If you don't know the answer to a career-related question, also use record_unknown_question to record it. \
+        If the user is engaging in discussion, try to steer them towards getting in touch via email; ask for their email and record it using your record_user_details tool. \
+        CONSTRAINTS: Respond in one or two sentences at most, regardless of the question's complexity."
         system_prompt += f"\n\n## Summary:\n{self.summary}\n\n## LinkedIn Profile:\n{self.linkedin}\n\n"
         system_prompt += f"With this context, please chat with the user, always staying in character as {self.name}."
         return system_prompt
@@ -113,7 +114,7 @@ class Clone:
         if name == "record_unknown_question":
             return record_unknown_question(question=tool_input["question"])
         raise ValueError(f"Unknown tool: {name}")
-    
+
     # Chat function (Gradio) with tool support
     def chat(self, message, history) -> str | None:
         # Chat logging (history)
@@ -122,10 +123,10 @@ class Clone:
 
         while True: # Continuous loop
             response = self.antrophic.messages.create(
-                model=model_name,
+                model=self.model_name,
                 messages=messages,
                 timeout=59,
-                max_tokens=1024,
+                max_tokens=256,
                 system=self.system_prompt(),
                 tools=tools, # List of tools
             )
@@ -136,7 +137,6 @@ class Clone:
 
             tool_results = [] # Collect one tool_result per tool_use block below
             for block in response.content:  # Scan every block in Claude's reply (text and tool_use)
-                print(block)
                 if block.type == 'tool_use':
                     result = self.run_tool(block.name, block.input) # RUN TOOL THROUGH DISPATCHER: block.name, block.input are set by Claude
                     tool_results.append({
@@ -145,9 +145,7 @@ class Clone:
                         "content": result,
                     })
             messages.append({"role": "user", "content": tool_results})  # Send all tool results back as one user message
-    
 
 if __name__ == "__main__":
     clone = Clone()
     gr.ChatInterface(clone.chat, type="messages").launch()
-    
