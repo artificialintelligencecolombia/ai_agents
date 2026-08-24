@@ -15,7 +15,7 @@ async def main():
         options=ClaudeAgentOptions(
             allowed_tools=[ "WebSearch"],  # Auto-approve these tools
             permission_mode="acceptEdits",  # Auto-approve file edits
-        ),
+        )
     ):
         # Print human-readable output
         if isinstance(message, AssistantMessage):
