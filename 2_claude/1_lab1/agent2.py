@@ -27,7 +27,6 @@ async def main():
                     if hasattr(block, "text"):
                         print(block.text)  # Claude's reasoning
                     else:
-                        print("FLAG!")
                         #print(type(block).__name__, block)
         elif isinstance(message, ResultMessage):
             print(f"Done: {message.subtype}")  
