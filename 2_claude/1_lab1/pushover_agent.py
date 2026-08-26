@@ -14,10 +14,8 @@ pushover_user = os.environ["PUSHOVER_USER"]
 pushover_token = os.environ["PUSHOVER_API_TOKEN"] 
 pushover_url = "https://api.pushover.net/1/messages.json"
 
-print(pushover_token)
-
-#@tool("send_push", "Send a message to the user", {"message": str})
-async def push_tool(args: dict[str, Any]) -> None:
+@tool("send_push", "Send a message to the user", {"message": str})
+async def push_message(args: dict[str, Any]) -> None:
     """Sends a given message to the user as a notification"""
     message = args["message"]
     async with httpx.AsyncClient() as client:
@@ -25,7 +23,29 @@ async def push_tool(args: dict[str, Any]) -> None:
         resp = await client.post(pushover_url, data=payload, timeout=10)
     data = resp.json()
     print(data)
+    return {"content": [{"type": "text", "text": f"Message sent to user"}]}
 
-    #return {"content": [{"type": "text", "text": f"1 USD = {rate} COP"}]}
+server = create_sdk_mcp_server(
+    name="fx-tools",
+    version="1.0.0",
+    tools=[push_message])
 
-asyncio.run(push_tool({"message": "Puto"}))
+options = ClaudeAgentOptions(
+    mcp_servers={"fx-tools": server},
+    allowed_tools=["mcp__fx-tools__push_message"],
+    permission_mode="bypassPermissions",
+)
+
+async def main():
+    prompt = "Send a message to the user"
+    async for message in query(prompt=prompt, options=options):
+        if isinstance(message, AssistantMessage):
+            for block in message.content:
+                if hasattr(block, "text"):
+                    print(block.text)
+                elif hasattr(block, "name"):
+                    print(f"Tool: {block.name}({block.input})")
+        elif isinstance(message, ResultMessage):
+            print(f"Done: {message.subtype}")
+
+asyncio.run(main())
