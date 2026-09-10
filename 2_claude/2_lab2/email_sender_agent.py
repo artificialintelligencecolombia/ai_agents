@@ -9,21 +9,30 @@ load_dotenv(override=True)
 resend.api_key = os.environ["RESEND_API_KEY"]
 os.environ["ANTHROPIC_API_KEY"] = os.environ["ANTHROPIC_API_KEY2"]
 
+email_list = ["damarias991@gmail.com", "futuro.oil@gmail.com"]
+
 # Create a function to send emails using the Resend API
 def send_email(email_list: list) -> None:
     for r in email_list:
         r = resend.Emails.send({
             "from": "hola@mail.aicolombia.io",
-            "to": ["damarias991@gmail.com"],
-            "reply_to": "damarias991@gmail.com",
+            "to": r,
+            "reply_to": r,
             "subject": "test",
             "html": "<p>hello</p>",
         })
         print(r)
-@tool("send_email", "Send emails to a list of emails", {"email_list": list})
+
+@tool("send_email", "Send emails to a list of emails", {"to": str, "subject": str, "message": str})
 async def send_email_tool(args) -> dict:
-    send_email(args["email_list"])
-    return {"content": [{"type": "text", "text": "Sent"}]}
+    resend.Emails.send({
+            "from": "hola@mail.aicolombia.io",
+            "to": args["to"],
+            "reply_to": args["to"],
+            "subject": args["subject"],
+            "html": args["message"],
+        })
+    return {"content": [{"type": "text", "text": f"Sent to {args['to']}"}]}
 
 server = create_sdk_mcp_server(
     name="fx-tools",
@@ -36,7 +45,7 @@ options = ClaudeAgentOptions(
     permission_mode="bypassPermissions",
 )
 async def main():
-    prompt = "Send a email to the user damarias..."
+    prompt = f"Send a email to the users of {', '.join(email_list)} with a unique greeting message"
     async for message in query(prompt=prompt, options=options):
         if isinstance(message, AssistantMessage):
             for block in message.content:
