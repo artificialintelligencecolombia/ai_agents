@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 from claude_agent_sdk import tool, create_sdk_mcp_server, query, ClaudeAgentOptions, AssistantMessage, ResultMessage
+from typing import Any 
 import resend
 import os
 import asyncio
@@ -10,7 +11,7 @@ os.environ["ANTHROPIC_API_KEY"] = os.environ["ANTHROPIC_API_KEY2"]
 email_list = os.environ.get("EMAIL_LIST", "").split(",")  # Get the email list from environment variable
 
 @tool("send_email", "Send emails to a list of emails", {"to": str, "subject": str, "message": str})
-async def send_email_tool(args) -> dict:
+async def send_email_tool(args) -> dict[str: Any]:
     try:
         await asyncio.to_thread(resend.Emails.send, {
                 "from": "hola@mail.aicolombia.io",
