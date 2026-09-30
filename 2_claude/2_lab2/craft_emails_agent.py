@@ -111,3 +111,7 @@ async def main():
             print(f"Done: {message.subtype}")
 
 asyncio.run(main())
+
+# AI system, specifically a multi-agent orchestration pipeline built on the 
+# Claude Agent SDK: a supervisor agent that uses tool-calling to delegate to three drafting sub-agents plus a send action, 
+# wired together as an MCP server.
