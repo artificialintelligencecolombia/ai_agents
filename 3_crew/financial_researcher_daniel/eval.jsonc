@@ -1,0 +1,37 @@
+// crewai-eval — what "good" means for this crew.
+//
+// Written from your last run: every criterion below is a task's own
+// `expected_output`, which is the bar the crew set for itself. Say what YOU
+// want judged and the next `crewai eval` uses it.
+//
+// Each entry in `criteria` is one yes/no question about the final output, asked
+// and answered on its own. Write them so they can be answered from the output
+// alone — specific to this crew's job, not "is it well written".
+//
+// `task_criteria` and `agent_criteria` ask about one step instead: keyed by a
+// task's name or an agent's role, judged against that step's own output.
+//
+// `assertions` are checked in code, never by a judge: contains, not_contains,
+// regex, min_length, json_parses.
+{
+  "schema": "crewai.eval/v1",
+  "dataset": [
+    {
+      "id": "trace-1",
+      "inputs": {
+        "company": "Ecopetrol",
+        "country": "Colombia",
+        "date": "2026-10-21"
+      },
+      "expected_output": "A one-page markdown summary (max 400 words) on Ecopetrol as of 2026-10-21: short headings, bullet points, a key-metrics table, and sources listed at the end.",
+      "criteria": [
+        "The final output satisfies the task's expected output: A one-page markdown summary (max 400 words) on Ecopetrol as of 2026-10-21: short headings, bullet points, a key-metrics table, and sources listed at the end."
+      ],
+      "task_criteria": {
+        "conduct_thorough_research_on_task": [
+          "The task's output satisfies its expected output: A structured research document on Ecopetrol (Colombia) as of 2026-10-21, with one section per focus area. Every figure must include its source and date."
+        ]
+      }
+    }
+  ]
+}
