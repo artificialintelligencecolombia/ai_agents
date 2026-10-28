@@ -41,8 +41,8 @@
       // "security_config": {},
 
       // Which agent handles this task
-      "agent": "financial_news_analyst_finding"
-
+      "agent": "financial_news_analyst_finding",
+      "output_file": "output/trending_companies.json" 
       // "tools": [],
       // "human_input": false,
       // "async_execution": false
@@ -85,7 +85,8 @@
       "agent": "senior_financial_researcher",
 
       // Task outputs used as context
-      "context": ["search_news_published_in_task"]
+      "context": ["search_news_published_in_task"],
+      "output_file": "output/research_report.json" 
 
       // "tools": [],
       // "human_input": false,
