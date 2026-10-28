@@ -1,86 +1,56 @@
-**Push notification: not sent.** I have no notification tool in this session, so I could not transmit the alert. The intended text is below:
+# Stock Selection Report: 12-Month Horizon, Moderate Risk Tolerance
 
-> **Pick: Organización Terpel (TERPEL).** Strongest verified earnings momentum of the three and the only wholesale-fit name, with key risk to margins and the Ecopetrol contract ending 28 Feb 2027.
+## Push Notification Status
 
----
+**Failed.** No push notification tool is available in this session, so I could not send the alert. Draft text for when it can be sent:
 
-# Research Report: 12-Month Candidate Selection (Moderate Risk)
+> **Stock Picker:** Pei (BVC: PEI) is the only candidate with verifiable research so far. Rationale: reported H1 2026 operating income rose 5.3% with an 85.03% operating margin, but the pick depends on Terranum deal execution and thin trading liquidity.
 
-**Scope:** Three BVC-listed companies from the supplied research (20–27 Oct 2026 window). Analysis uses only that research. It is not investment advice.
+## 1. Ranking of All Three Companies
 
-**Data caveat:** Most sources lack verifiable publication dates, and no company has window-dated news confirmed end to end. The ranking therefore rests on fundamentals and contract data, not on window-specific news. No valuation multiples were supplied, so I cannot assess whether any stock is cheap.
+**A full three-company ranking is not possible.** The supplied research covers one company only:
 
----
+| Rank | Company | Status |
+|---|---|---|
+| 1 | Patrimonio Autónomo Estrategias Inmobiliarias (Pei), BVC: PEI | Researched; the only verifiable candidate |
+| 2 | Company #2 | **No research supplied.** Cannot be ranked. |
+| 3 | Company #3 | **No research supplied.** Cannot be ranked. |
 
-## 1. Ranking
+The research record states that only Pei met the trending criteria in the search and that unverified names were deliberately excluded. I have not filled the ranking with invented data.
 
-| Rank | Company | Ticker | Verdict |
-|---|---|---|---|
-| **1** | Organización Terpel S.A. | TERPEL | **Selected** |
-| 2 | Almacenes Éxito / Grupo Éxito | EXITO | Rejected (watchlist) |
-| 3 | Cementos Argos S.A. | CEMARGOS | Rejected |
+## 2. Chosen Company: Pei (BVC: PEI)
 
----
+**Selection basis:** Pei is the only candidate that can be assessed against the criteria. Calling it the "best" of three is not supported. It is the best *verified* candidate, and the selection is conditional on the two missing companies being researched.
 
-## 2. Selection Criteria
+**Criteria it meets, based on the supplied research:**
 
-I scored each company on five criteria, weighted for a wholesale-focused, moderate-risk, 12-month mandate:
+- **Scale:** Described as the main real estate investment vehicle in Colombia, with more than 150 assets in more than 30 cities and a portfolio valued above COP 10.1 trillion. Company-reported, undated.
+- **Profitability:** H1 2026 operating margin of 85.03%, up 62 basis points (Pei release, August 2026).
+- **Growth:** H1 2026 operating income up 5.3% to COP 425,880 million; Q1 2026 revenue up 6.9%; Q1 NOI up 8.4% to COP 189,288 million. Trailing-twelve-month revenue is reported at COP 926 billion, up 8.6%, and net income at COP 621.54 billion, up 26.1% (stockanalysis.com, undated).
+- **Liquidity access:** Listed on the BVC, with LarrainVial added as a second liquidity provider alongside Alianza Valores in October 2026.
+- **Identified growth catalyst:** A binding agreement to acquire the Terranum portfolio, valued by Valora Analitik at roughly COP 2.8–3.0 trillion. The company projects 2027 revenue of COP 1.12 trillion.
 
-1. **Mandate fit (wholesale/distribution):** Does the business match the brief?
-2. **Earnings momentum:** Are the most recent reported periods growing, and is growth sustained?
-3. **Revenue and contract visibility:** Is there contracted or structural volume over the 12-month horizon?
-4. **Identifiable catalysts and checkpoints:** Are there dated events the thesis can be tested against?
-5. **Risk concentration:** Is the main risk understood and bounded for a moderate-risk investor?
+**Criteria it does not clearly meet:**
 
----
+- **Verified price and yield:** No dated current share price or dividend yield was verified, so valuation cannot be assessed.
+- **Dated financials:** Most sources are undated. Audited statements were not reviewed.
+- **Liquidity depth:** The need for market-maker support points to a thin float.
 
-## 3. Selected Company: Organización Terpel (TERPEL)
+## 3. Key Risk to the Chosen Company
 
-**Won on:** Criteria 1, 2, 3, and partly 4.
-
-- **Mandate fit (strongest):** Fuel and energy distribution is the closest match to the wholesale brief of the three.
-- **Earnings momentum (strongest):** Q1 2026 net income was COP 211,789M (+26.9% YoY). Q2 2026 consolidated revenue was COP 10.5T (+12.9%), EBITDA COP 509B (+17.8%), and net income +24%. H1 2026 net income was COP 409,254M (+25.4%). Growth is double-digit in both quarters, and the most recent quarter did not decelerate sharply.
-- **Contract visibility (strongest):** The Ecopetrol supply contract (about US$2.6B, 1 Apr 2026 to 28 Feb 2027) and the Avianca jet-fuel extension to September 2027 provide volume visibility across most of the 12-month horizon.
-- **Catalysts:** Q2 growth was attributed to service stations (EDS) and lubricants. The Terpel GT Premium launch adds a product-level driver. The Ecopetrol renewal is a dated decision point inside the horizon.
-
-**Why not a higher-conviction pick:** The net margin is only 1.77%, the Q1 EBITDA growth was partly a price-lag effect (underlying performance about -1% excluding it), and the company has no peer comparison in the supplied research. The reputational lead ("mejor reputación," Merco 2025) is self-reported.
-
-**Key risk to the chosen company:** **Margin compression combined with contract renewal risk.** The Ecopetrol contract expires 28 Feb 2027, inside the 12-month horizon. Its renewal terms are unknown, and Ecopetrol is a state-linked counterparty whose terms can change. Because the net margin is 1.77%, a modest shift in pricing, timing effects, or renewal economics could erase much of the earnings growth. Monitor the renewal announcement and the next quarterly margin trend.
-
----
+**Execution risk on the Terranum acquisition.** The deal still needs regulatory and shareholder approvals, and its final terms could not be verified. Because the acquisition would materially change the portfolio, leverage and distribution profile, the projected growth in the bull case depends on it closing on acceptable terms. A secondary risk is thin trading liquidity, which can produce price volatility. Both risks bear directly on a moderate-risk, 12-month mandate.
 
 ## 4. Rejected Companies
 
-### Almacenes Éxito / Grupo Éxito (EXITO), Rank 2
+**Company #2 and Company #3 were not rejected on the merits.** No research was supplied for either, so there is no evidence on which to say why they lost. Stating a reason would be fabrication. Before a final ranking, both need the same criteria applied: scale, margins, growth, valuation, liquidity, and key risk, all sourced and dated.
 
-**Why it lost:**
-- **Mandate fit (weak):** It is a supermarket and retailer, not a wholesale business. The research states this directly.
-- **Momentum is decelerating:** Q1 net income grew 64.6%, but Q2 grew only 6.3%. Q2 revenue rose just 5.7% excluding FX, and Q1 revenue grew 3.5%. Low single-digit top-line growth is weak against Terpel's double-digit growth.
-- **Margin sustainability is unproven:** Q2 recurring EBITDA margin (9.4%) is high against Q1's 7.9%, but the bases differ, so the trend is not confirmed.
-- **Competitive pressure:** A price war with discounters D1 and Ara threatens gross margins. The Redmás "competitive win" could not be verified.
+## 5. Recommended Next Steps
 
-**What would change the view:** The **29 Oct 2026 results release** is the most useful near-term checkpoint. A clean Q3 beat with sustained margins and revenue growth above low single digits would justify re-ranking Éxito above Terpel. Note, however, that Éxito still fails the mandate-fit criterion, so it would need to be a very strong result to overturn the ranking.
-
-### Cementos Argos S.A. (CEMARGOS), Rank 3
-
-**Why it lost:**
-- **Mandate fit (poor):** Cement, concrete, and aggregates are a weak fit for a wholesale brief.
-- **Earnings history (negative):** Earnings fell 53.6% in 2025. Q2 2026 revenue grew only +2.4%.
-- **Stale catalysts:** The dividend (COP 580 per share) and buyback expansion (COP 450,000M) were approved on 20 Mar 2026, outside the window. The only near-term dated item found is the preferred-share ex-dividend date of 25 Nov 2026, and the ordinary-share date is unverified.
-- **Structural risks:** The two-platform separation (Argos Latam and Argos Materials) takes about 24 months, so it carries execution and cost risk across the entire 12-month horizon with no payoff inside it. Cement is also cyclical and tied to construction activity.
-- **Price data conflict:** The 11,160 COP close (23 Oct 2026) differs from the brief's roughly 11,200, which weakens confidence in the reference data.
-
-**What would change the view:** Evidence of sustained revenue acceleration, a clear separation timeline with cost guidance, or a confirmed dividend yield case that the supplied research does not currently support.
+1. Research Companies #2 and #3 against the same criteria.
+2. Obtain Pei's current share price, dividend yield, and latest audited financial statements.
+3. Confirm the Terranum closing terms and approval timeline.
+4. Re-run the ranking once all three records are complete, and re-send the push notification then.
 
 ---
 
-## 5. Data Quality Notes Affecting the Pick
-
-- **Terpel's price** varies across sources (18,020 to 19,080 COP). I could not confirm a 27 Oct close, so any entry-price analysis should be re-checked against a live quote.
-- **Terpel's Q2 contract start:** The Avianca extension's start date (1 Oct 2026) is unverified.
-- **Terpel's reputation claim** is self-reported.
-- **The wholesale constraint:** No second strict wholesale name appeared in the BVC results. A broader search of Colombian distributors would be needed for a stronger comparison set.
-
----
-
-**This is research output, not investment advice.**
+*This is research output, not investment advice.*
